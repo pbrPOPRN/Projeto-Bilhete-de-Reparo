@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from core.forms import bilhete, ocorrencias, locais_de_ocorrencias, informacoes_de_ocorrencia, parecer_pop, servico_interjato, material, material_retorno
+from core.forms import bilhete, ocorrencia, locais_de_ocorrencias, informacoes_de_ocorrencia, parecer_pop, servico_interjato, material, material_retorno
 
 # Create your views here.
 
@@ -10,8 +10,8 @@ def home(request):
 
 
 def bilhetef(request):
-    formbilhete = bilhete(request.POST or None)
-    formocorre = ocorrencias(request.POST or None)
+    formbilhete = bilhete(request.POST or None, prefix ="bil")
+    formocorre = ocorrencia(request.POST or None, prefix="oco")
     formlocalocorre = locais_de_ocorrencias(request.POST or None)
     forminfoocorre = informacoes_de_ocorrencia(request.POST or None)
     formparecerpop = parecer_pop(request.POST or None)
@@ -19,7 +19,7 @@ def bilhetef(request):
     formmateriais = material(request.POST or None)
     formmatertrn =  material_retorno(request.POST or None)
 
-    if request.method == 'POST':
+    if request.POST:
         formbilhete.save()
         formocorre.save()
         formlocalocorre.save()
@@ -31,4 +31,4 @@ def bilhetef(request):
 
 
 
-    return render(request, 'core/formulario.html', {'bilhete': formbilhete, 'ocorre': formocorre, 'lococorre': formlocalocorre, 'infocorre': forminfoocorre,'parecerpop': formparecerpop, 'servinter': servico_interjato, 'material': formmateriais, 'materialretrn':formmatertrn })
+    return render(request, 'core/formulario.html', {'bilhete': formbilhete, 'ocorre': formocorre, 'lococorre': formlocalocorre, 'infocorre': forminfoocorre,'parecerpop': formparecerpop, 'servinter': servico_interjato, 'material': formmateriais, 'materialretrn':formmatertrn})

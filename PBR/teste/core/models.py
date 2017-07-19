@@ -41,8 +41,7 @@ class bilhete(models.Model):
     pendencia = models.TextField(default='----')
     numero_do_bilhete = models.AutoField(primary_key=True)
 
-    def __str__(self):
-    	return 'Numero de bilhete' + self.numero_do_bilhete + 'esta em Status' + self.status
+
 
 
 class ocorrencias(models.Model):
@@ -54,14 +53,15 @@ class ocorrencias(models.Model):
 
 class locais_de_ocorrencias(models.Model):
 
-    id_ocorrencia = models.ForeignKey('ocorrencias', on_delete=models.CASCADE)
+    id_bilhete = models.ForeignKey('bilhete', on_delete=models.CASCADE)
     endereco = models.CharField(max_length=60, null=True)
     cidade = models.CharField(max_length=60, null=True)
     trecho = models.CharField(max_length=60, null=True)
     maps = models.CharField(max_length=60, null=True)
 
+
 class informacoes_de_ocorrencia(models.Model):
-    id_ocorrencia = models.ForeignKey('ocorrencias', on_delete=models.CASCADE)
+    id_bilhete = models.ForeignKey('bilhete', on_delete=models.CASCADE)
     tipo_de_ocorrencia = models.CharField(max_length=60, null=True)
     manutencao = models.CharField(max_length=50, choices=MANUTENCAO_CHOICES, null = True)
     derivacao_de_ocorrencia = models.CharField(max_length=60, null=True)
@@ -71,10 +71,9 @@ class informacoes_de_ocorrencia(models.Model):
     mais_informacoes = models.TextField(null=True)
 
 
-
 class parecer_pop(models.Model):
 
-    id_ocorrencia = models.ForeignKey('ocorrencias', on_delete=models.CASCADE)
+    id_bilhete = models.ForeignKey('bilhete', on_delete=models.CASCADE)
     fiscal_campo = models.CharField("fiscal de campo", max_length=60, null=True)
     parecer_campo = models.CharField("parecer de campo", max_length=60, null=True)
     fiscal_administrativo = models.CharField("fiscal administrativo", max_length=60, null=True)
@@ -83,7 +82,7 @@ class parecer_pop(models.Model):
 
 class servico_interjato(models.Model):
 
-    id_ocorrencia = models.ForeignKey('ocorrencias', on_delete=models.CASCADE)
+    id_bilhete = models.ForeignKey('bilhete', on_delete=models.CASCADE)
     equipe_de_lancamento = models.CharField(max_length=60, null=True)
     equipe_de_fusao = models.CharField(max_length=60, null=True)
     tecnico_de_medicao = models.CharField(max_length=60, null=True)
@@ -97,7 +96,7 @@ class servico_interjato(models.Model):
 
 
 class material(models.Model):    # material envolviodo
-    id_servico= models.ForeignKey('servico_interjato', on_delete=models.CASCADE)
+    id_bilhete = models.ForeignKey('bilhete', on_delete=models.CASCADE)
     objetos = models.CharField(max_length=50, choices=OBJETOS_CHOICES , null=True)
     fabricante = models.CharField(max_length=50, null=True)
     tipo = models.CharField(max_length=50, null=True)
@@ -106,7 +105,8 @@ class material(models.Model):    # material envolviodo
     derivacoes = models.IntegerField(null=True)
     poste = models.CharField(max_length=50, null=True)
 
+
 class material_retorno(models.Model):
-    id_servico= models.ForeignKey('servico_interjato', on_delete=models.CASCADE)
+    id_bilhete = models.ForeignKey('bilhete', on_delete=models.CASCADE)
     objeto_retorno = models.CharField(max_length = 15, null=True)
     estado = models.CharField(max_length=50, null=True)

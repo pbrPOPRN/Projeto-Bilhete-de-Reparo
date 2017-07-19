@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'novoteste',
     'bootstrap3',
     'crispy_forms',
     'widget_tweaks',
