@@ -4,25 +4,25 @@ from datetime import date
 from django.utils import timezone
 
 STATUS_CHOICES = (
-    ('Pendente', 'Pendente'),
-    ('Fechado', 'Fechado'),
-    ('Finalizado', 'Finalizado')
+    (' ', 'Pendente'),
+    (' ', 'Fechado'),
+    (' ', 'Finalizado')
 
 )
 
 ATENDIMENTO_CHOICES = (
-    ('TSRF', 'Trecho sem redundancia fisica'),
-    ('TCRF', 'Trecho com redundancia fisica'),
-    ('TCAT', 'Trecho com atendimento critico')
+    (' ', 'Trecho sem redundancia fisica'),
+    (' ', 'Trecho com redundancia fisica'),
+    (' ', 'Trecho com atendimento critico')
 
 )
 
-MANUTENCAO_CHOICES = (('corretiva', 'Corretiva'),('Preventiva', 'Preventiva'),('Programada', 'Programada'))
+MANUTENCAO_CHOICES = ((' ', 'Corretiva'),(' ', 'Preventiva'),(' ', 'Programada'))
 
 TEMPO_CHOICES = (
-    ('aberto', 'Aberto'),
-    ('chuvoso', 'Chuvoso'),
-    ('nublado', 'Nublado')
+    (' ', 'Aberto'),
+    (' ', 'Chuvoso'),
+    (' ', 'Nublado')
 
 )
 OBJETOS_CHOICES = ((' ', 'Cabo'),(' ', 'Caixa de emenda'))
@@ -39,12 +39,14 @@ class bilhete(models.Model):
     dias_de_encerramento = models.IntegerField(null=True)
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, null=True)
     pendencia = models.TextField(default='----')
-    numero_do_bilhete = models.AutoField("numero do bilhete", primary_key=True)
+    numero_do_bilhete = models.AutoField(primary_key=True)
+
+
 
 
 class ocorrencias(models.Model):
 
-    id_bilhete = models.ForeignKey('bilhete', to_field = 'numero_do_bilhete',default=bilhete.objects.last('numero_do_bilhete') , on_delete=models.CASCADE)
+    id_bilhete = models.ForeignKey('bilhete', on_delete=models.CASCADE)
     protocolo_interjato = models.CharField(max_length=60, null=True)
     atendente_interjato = models.CharField(max_length=50, null=True)
 
