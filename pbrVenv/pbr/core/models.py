@@ -42,16 +42,18 @@ class bilhete(models.Model):
 
 
 DEFAULT_BILHETE = bilhete.objects.latest('numero_do_bilhete')
+
+
 class ocorrencias(models.Model):
 
-    id_bilhete = models.OneToOneField('bilhete', on_delete=models.CASCADE, default = DEFAULT_BILHETE)
+    id_bilhete = models.OneToOneField('bilhete', on_delete=models.CASCADE, primary_key=True, default = DEFAULT_BILHETE)
     protocolo_interjato = models.CharField(max_length=60, null=True)
     atendente_interjato = models.CharField(max_length=50, null=True)
 
 
 class locais_de_ocorrencias(models.Model):
 
-    id_bilhete = models.OneToOneField('bilhete', on_delete=models.CASCADE, default = DEFAULT_BILHETE)
+    id_bilhete = models.OneToOneField('bilhete', on_delete=models.CASCADE, primary_key=True, default = DEFAULT_BILHETE)
     endereco = models.CharField(max_length=60, null=True)
     cidade = models.CharField(max_length=60, null=True)
     trecho = models.CharField(max_length=60, null=True)
@@ -59,7 +61,7 @@ class locais_de_ocorrencias(models.Model):
 
 
 class informacoes_de_ocorrencia(models.Model):
-    id_bilhete = models.OneToOneField('bilhete', on_delete=models.CASCADE, default = DEFAULT_BILHETE)
+    id_bilhete = models.OneToOneField('bilhete', on_delete=models.CASCADE, primary_key=True, default = DEFAULT_BILHETE)
     tipo_de_ocorrencia = models.CharField(max_length=60, null=True)
     manutencao = models.CharField(max_length=50, choices=MANUTENCAO_CHOICES, null = True)
     derivacao_de_ocorrencia = models.CharField(max_length=60, null=True)
@@ -71,7 +73,7 @@ class informacoes_de_ocorrencia(models.Model):
 
 class parecer_pop(models.Model):
 
-    id_bilhete = models.OneToOneField('bilhete', on_delete=models.CASCADE, default = DEFAULT_BILHETE)
+    id_bilhete = models.OneToOneField('bilhete', on_delete=models.CASCADE, primary_key=True, default = DEFAULT_BILHETE)
     fiscal_campo = models.CharField("fiscal de campo", max_length=60, null=True)
     parecer_campo = models.CharField("parecer de campo", max_length=60, null=True)
     fiscal_administrativo = models.CharField("fiscal administrativo", max_length=60, null=True)
@@ -80,7 +82,7 @@ class parecer_pop(models.Model):
 
 class servico_interjato(models.Model):
 
-    id_bilhete = models.OneToOneField('bilhete', on_delete=models.CASCADE, default = DEFAULT_BILHETE)
+    id_bilhete = models.OneToOneField('bilhete', on_delete=models.CASCADE, primary_key=True, default = DEFAULT_BILHETE)
     equipe_de_lancamento = models.CharField(max_length=60, null=True)
     equipe_de_fusao = models.CharField(max_length=60, null=True)
     tecnico_de_medicao = models.CharField(max_length=60, null=True)
@@ -94,7 +96,7 @@ class servico_interjato(models.Model):
 
 
 class material(models.Model):    # material envolviodo
-    id_bilhete = models.OneToOneField('bilhete', on_delete=models.CASCADE, default = DEFAULT_BILHETE)
+    id_bilhete = models.OneToOneField('bilhete', on_delete=models.CASCADE, primary_key=True, default = DEFAULT_BILHETE)
     objetos = models.CharField(max_length=50, choices=OBJETOS_CHOICES , null=True)
     fabricante = models.CharField(max_length=50, null=True)
     tipo = models.CharField(max_length=50, null=True)
@@ -105,6 +107,6 @@ class material(models.Model):    # material envolviodo
 
 
 class material_retorno(models.Model):
-    id_bilhete = models.OneToOneField('bilhete', on_delete=models.CASCADE)
+    id_bilhete = models.OneToOneField('bilhete', on_delete=models.CASCADE, primary_key=True, default = DEFAULT_BILHETE)
     objeto_retorno = models.CharField(max_length = 15, null=True)
     estado = models.CharField(max_length=50, null=True)
