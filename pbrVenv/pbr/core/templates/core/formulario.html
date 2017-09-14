@@ -1,0 +1,268 @@
+{% load bootstrap3 %} {# Load CSS and JavaScript #} {% bootstrap_css %} {% bootstrap_javascript %} {# Display django.contrib.messages as Bootstrap alerts #} {% bootstrap_messages %}
+<html>
+
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </head>
+
+  <body>
+<center>
+<div class='container-fluid'>
+<form method="POST">
+
+      {% csrf_token %}
+      <div class='col-md-9'>
+
+        <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse">BILHETE DE REPARO</a>
+            </h4>
+          </div>
+          <div id="collapse" class="panel-collapse collapse">
+            <div class="panel-body">
+
+
+    <div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse1">Informações sobre o bilhete</a>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse">
+      <div class="panel-body">
+
+      <div class='col-md-6'>
+        {%bootstrap_form bilhete layout='vertical'%}
+
+       </div>
+
+
+
+
+    </div>
+      <div class="panel-footer">Panel Footer</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="panel-group">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" href="#collapse2">Ocorrencia</a>
+    </h4>
+  </div>
+  <div id="collapse2" class="panel-collapse collapse">
+    <div class="panel-body">
+
+
+
+    <div class='col-md-6'>
+      {%bootstrap_form ocorre layout='vertical'%}
+     </div>
+
+
+
+
+  </div>
+    <div class="panel-footer">Footer</div>
+  </div>
+</div>
+</div>
+
+
+
+
+<div class="panel-group">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" href="#collapse3">Local ocorrencia</a>
+    </h4>
+  </div>
+  <div id="collapse3" class="panel-collapse collapse">
+    <div class="panel-body">
+
+
+
+    <div class='col-md-6'>
+      {%bootstrap_form lococorre layout='vertical'%}
+     </div>
+
+
+
+
+  </div>
+    <div class="panel-footer">Footer</div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+<div class="panel-group">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" href="#collapse4">Informações de ocorrencia</a>
+    </h4>
+  </div>
+  <div id="collapse4" class="panel-collapse collapse">
+    <div class="panel-body">
+
+
+
+    <div class='col-md-6'>
+      {%bootstrap_form infocorre layout='vertical'%}
+     </div>
+
+
+
+
+  </div>
+    <div class="panel-footer">Footer</div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+<div class="panel-group">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" href="#collapse5">Parecer POP</a>
+    </h4>
+  </div>
+  <div id="collapse5" class="panel-collapse collapse">
+    <div class="panel-body">
+
+
+
+    <div class='col-md-6'>
+      {%bootstrap_form parecerpop layout='vertical'%}
+     </div>
+
+
+
+
+  </div>
+    <div class="panel-footer">Footer</div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+<div class="panel-group">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" href="#collapse6">Serviço INTERJATO</a>
+    </h4>
+  </div>
+  <div id="collapse6" class="panel-collapse collapse">
+    <div class="panel-body">
+
+
+
+    <div class='col-md-6'>
+      {%bootstrap_form servinter layout='vertical'%}
+     </div>
+
+
+
+
+  </div>
+    <div class="panel-footer">Footer</div>
+  </div>
+</div>
+</div>
+
+
+
+<div class="panel-group">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" href="#collapse7">Material</a>
+    </h4>
+  </div>
+  <div id="collapse7" class="panel-collapse collapse">
+    <div class="panel-body">
+
+
+
+    <div class='col-md-6'>
+      {%bootstrap_form material layout='vertical'%}
+     </div>
+
+
+
+
+  </div>
+    <div class="panel-footer">Footer</div>
+  </div>
+</div>
+</div>
+
+
+  <div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse8">Material retorno</a>
+      </h4>
+    </div>
+    <div id="collapse8" class="panel-collapse collapse">
+      <div class="panel-body">
+
+
+
+      <div class='col-md-6'>
+        {%bootstrap_form materialretrn layout='vertical'%}
+
+       </div>
+
+
+
+
+    </div>
+      <div class="panel-footer">Footer</div>
+    </div>
+  </div>
+</div>
+       {% bootstrap_button "Salvar" button_type="submit" button_class="btn-primary"%}
+    </div>
+    	</br>
+
+    </form>
+
+
+  </div>
+    <div class="panel-footer">Panel Footer</div>
+  </div>
+</div>
+</div>
+    </div>
+
+
+
+</center>
+  </body>
+
+</html>
