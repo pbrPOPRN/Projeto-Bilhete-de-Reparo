@@ -1,47 +1,56 @@
 from django.forms import ModelForm
-from django.forms.widgets import HiddenInput
-from core.models import bilhete, atendimento, local, parecer, informacao_servico, material, material_retorno
+from core.models import bilhete, ocorrencias, locais_de_ocorrencias, informacoes_de_ocorrencia, parecer_pop, servico_interjato, material, material_retorno
 
 
-class bilhetes(ModelForm):
+class bilhete(ModelForm):
     class Meta:
         model = bilhete
-        fields = '__all__'
+        fields = ['abertura_do_bilhete', 'fechamento_do_bilhete', 'tipo_de_atendimento', 'dias_fechamento', 'horas_fechamento', 'encerramento_do_bilhete', 'dias_de_encerramento', 'status', 'pendencia', 'numero_do_bilhete']
 
 
-class atendimento(ModelForm):
+class ocorrencia(ModelForm):
     class Meta:
-        model = atendimento
-        fields = '__all__'
-        exclude=['id_bilhete']
+        model = ocorrencias
+        exclude = ['id_bilhete']
+        #fields = ['protocolo_interjato', 'atendente_interjato', 'id_bilhete']
 
-class local(ModelForm):
+class locais_de_ocorrencias(ModelForm):
     class Meta:
-        model = local
-        exclude=['id_bilhete']    
-        fields = '__all__'
+        model = locais_de_ocorrencias
+        exclude = ['id_bilhete']
+        #fields = ['id_bilhete', 'endereco', 'cidade', 'trecho', 'maps']
 
-class informacao_servico(ModelForm):
-    class Meta:
-        model = informacao_servico
-        exclude=['id_bilhete']    
-        fields = '__all__'
 
-class parecer(ModelForm):
+class informacoes_de_ocorrencia(ModelForm):
     class Meta:
-        model = parecer
-        exclude=['id_bilhete']
-        fields = '__all__'
+        model = informacoes_de_ocorrencia
+        exclude = ['id_bilhete']
+        #fields = ['tipo_de_ocorrencia', 'manutencao', 'derivacao_de_ocorrencia', 'responsavel_pelo_rompimento', 'cabo', 'resumo_da_ocorrencia', 'mais_informacoes', 'id_bilhete']
+
+
+class parecer_pop(ModelForm):
+    class Meta:
+        model = parecer_pop
+        exclude = ['id_bilhete']
+        #fields = ['id_bilhete', 'fiscal_campo', 'parecer_campo', 'fiscal_administrativo', 'parecer_adm']
+
+
+class servico_interjato(ModelForm):
+    class Meta:
+        model = servico_interjato
+        exclude = ['id_bilhete']
+        #fields = ['id_bilhete', 'equipe_de_lancamento', 'equipe_de_fusao', 'tecnico_de_medicao', 'supervisor', 'tempo', 'postes_envolvidos', 'data_de_inicio', 'data_fim', 'tempo_decorrido', 'resumo_do_servico']
+
 
 class material(ModelForm):
     class Meta:
         model = material
-        exclude=['id_bilhete']
-        fields = '__all__'
+        exclude = ['id_bilhete']
+        #fields = ['id_bilhete', 'objetos', 'fabricante', 'tipo', 'bandejas', 'fibras', 'derivacoes', 'poste']
 
 
 class material_retorno(ModelForm):
     class Meta:
         model = material_retorno
-        exclude=['id_bilhete']
-        fields = '__all__'
+        exclude = ['id_bilhete']
+        #fields = ['id_bilhete', 'objeto_retorno', 'estado']
