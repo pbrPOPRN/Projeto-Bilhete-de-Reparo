@@ -1,30 +1,34 @@
-{% load bootstrap3 %} {# Load CSS and JavaScript #} {% bootstrap_css %} {% bootstrap_javascript %} {# Display django.contrib.messages as Bootstrap alerts #} {% bootstrap_messages %}
-<html>
+{% load bootstrap4 %} {# Load CSS and JavaScript #} {% bootstrap_css %} {% bootstrap_javascript %} {# Display django.contrib.messages as Bootstrap alerts #} {% bootstrap_messages %}
+<html lang="pt">
 
   <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
 
   <body>
-<center>
+
 <div class='container-fluid'>
+<nav class="navbar navbar-toggleable-md navbar-light" style= "     
+    -webkit-box-shadow: 0 4px 8px -3px blue;
+        -moz-box-shadow: 0 4px 8px -3px blue;
+        box-shadow: 0 4px 8px -3px orange;"><div align="center">
+  <a class="navbar-brand" href="index.php"><center><h1 class="display-3">SGBR POP-RN</h1></a></center>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>  
+<center>
+
 <form method="POST">
 
       {% csrf_token %}
-      <div class='col-md-9'>
-
-        <div class="panel-group">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" href="#collapse">BILHETE DE REPARO</a>
-            </h4>
-          </div>
-          <div id="collapse" class="panel-collapse collapse">
-            <div class="panel-body">
-
 
     <div class="panel-group">
   <div class="panel panel-default">
@@ -57,7 +61,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4 class="panel-title">
-      <a data-toggle="collapse" href="#collapse2">Ocorrencia</a>
+      <a data-toggle="collapse" href="#collapse2">Atendimento</a>
     </h4>
   </div>
   <div id="collapse2" class="panel-collapse collapse">
@@ -66,14 +70,14 @@
 
 
     <div class='col-md-6'>
-      {%bootstrap_form ocorre layout='vertical'%}
+      {%bootstrap_form atd layout='vertical'%}
      </div>
 
 
 
 
   </div>
-    <div class="panel-footer">Footer</div>
+    <div class="panel-footer"></div>
   </div>
 </div>
 </div>
@@ -85,7 +89,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4 class="panel-title">
-      <a data-toggle="collapse" href="#collapse3">Local ocorrencia</a>
+      <a data-toggle="collapse" href="#collapse3">Local</a>
     </h4>
   </div>
   <div id="collapse3" class="panel-collapse collapse">
@@ -94,14 +98,14 @@
 
 
     <div class='col-md-6'>
-      {%bootstrap_form lococorre layout='vertical'%}
+      {%bootstrap_form local layout='vertical'%}
      </div>
 
 
 
 
   </div>
-    <div class="panel-footer">Footer</div>
+    <div class="panel-footer"></div>
   </div>
 </div>
 </div>
@@ -114,7 +118,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4 class="panel-title">
-      <a data-toggle="collapse" href="#collapse4">Informações de ocorrencia</a>
+      <a data-toggle="collapse" href="#collapse4">Informações de Serviço</a>
     </h4>
   </div>
   <div id="collapse4" class="panel-collapse collapse">
@@ -123,14 +127,14 @@
 
 
     <div class='col-md-6'>
-      {%bootstrap_form infocorre layout='vertical'%}
+      {%bootstrap_form infSer layout='vertical'%}
      </div>
 
 
 
 
   </div>
-    <div class="panel-footer">Footer</div>
+    <div class="panel-footer"></div>
   </div>
 </div>
 </div>
@@ -143,7 +147,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4 class="panel-title">
-      <a data-toggle="collapse" href="#collapse5">Parecer POP</a>
+      <a data-toggle="collapse" href="#collapse5">Parecer</a>
     </h4>
   </div>
   <div id="collapse5" class="panel-collapse collapse">
@@ -152,7 +156,7 @@
 
 
     <div class='col-md-6'>
-      {%bootstrap_form parecerpop layout='vertical'%}
+      {%bootstrap_form parecer layout='vertical'%}
      </div>
 
 
@@ -163,36 +167,6 @@
   </div>
 </div>
 </div>
-
-
-
-
-
-<div class="panel-group">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4 class="panel-title">
-      <a data-toggle="collapse" href="#collapse6">Serviço INTERJATO</a>
-    </h4>
-  </div>
-  <div id="collapse6" class="panel-collapse collapse">
-    <div class="panel-body">
-
-
-
-    <div class='col-md-6'>
-      {%bootstrap_form servinter layout='vertical'%}
-     </div>
-
-
-
-
-  </div>
-    <div class="panel-footer">Footer</div>
-  </div>
-</div>
-</div>
-
 
 
 <div class="panel-group">
@@ -234,7 +208,7 @@
 
 
       <div class='col-md-6'>
-        {%bootstrap_form materialretrn layout='vertical'%}
+        {%bootstrap_form matrtrn layout='vertical'%}
 
        </div>
 
@@ -251,18 +225,12 @@
     	</br>
 
     </form>
-
-
-  </div>
-    <div class="panel-footer">Panel Footer</div>
-  </div>
 </div>
-</div>
-    </div>
-
-
 
 </center>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   </body>
 
 </html>
