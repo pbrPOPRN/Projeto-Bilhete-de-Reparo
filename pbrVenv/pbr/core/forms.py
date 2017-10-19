@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from core.models import bilhete, ocorrencias, locais_de_ocorrencias, informacoes_de_ocorrencia, parecer_pop, servico_interjato, material, material_retorno
 
 
-class bilhete(ModelForm):
+class bilhetes(ModelForm):
     class Meta:
         model = bilhete
         fields = ['abertura_do_bilhete', 'fechamento_do_bilhete', 'tipo_de_atendimento', 'dias_fechamento', 'horas_fechamento', 'encerramento_do_bilhete', 'dias_de_encerramento', 'status', 'pendencia', 'numero_do_bilhete']

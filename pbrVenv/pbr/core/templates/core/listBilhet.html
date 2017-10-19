@@ -1,0 +1,21 @@
+{% load bootstrap4 %} {# Load CSS and JavaScript #} {% bootstrap_css %} {% bootstrap_javascript %} {# Display django.contrib.messages as Bootstrap alerts #} {% bootstrap_messages %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+</head>
+<body>
+<table class="table">
+<th scope="row">
+bilhete
+</th>
+{% for bilhete in lista %}
+	<tr>
+<td>{{bilhete.numero_do_bilhete}}</td>
+</tr>
+{%endfor%}
+</table>
+</body>
+</html> 

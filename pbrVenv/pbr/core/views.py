@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from core.forms import bilhete, ocorrencia, locais_de_ocorrencias, informacoes_de_ocorrencia, parecer_pop, servico_interjato, material, material_retorno
-
+from core.forms import bilhetes, ocorrencia, locais_de_ocorrencias, informacoes_de_ocorrencia, parecer_pop, servico_interjato, material, material_retorno
+from core.models import bilhete, ocorrencias, locais_de_ocorrencias, informacoes_de_ocorrencia, parecer_pop, servico_interjato, material, material_retorno
 
 # Create your views here.
 
@@ -11,7 +11,7 @@ def home(request):
 
 
 def bilhetef(request):
-    formbilhete = bilhete(request.POST or None)
+    formbilhete = bilhetes(request.POST or None)
     formocorre = ocorrencia(request.POST or None)
     formlocalocorre = locais_de_ocorrencias(request.POST or None)
     forminfoocorre = informacoes_de_ocorrencia(request.POST or None)
@@ -35,3 +35,9 @@ def bilhetef(request):
 
 
     return render(request, 'core/formulario.html', {'bilhete': formbilhete, 'ocorre': formocorre, 'lococorre': formlocalocorre, 'infocorre': forminfoocorre,'parecerpop': formparecerpop, 'servinter': servico_interjato, 'material': formmateriais, 'materialretrn':formmatertrn})
+
+
+def lista(request):
+    
+    lista = bilhete.objects.all()
+    return render(request, 'core/listBilhet.html', {'lista': lista})
